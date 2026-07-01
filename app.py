@@ -3,6 +3,12 @@ from config import Config
 from model import db
 import os
 
+
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+FRONTEND_UTAMA = os.path.join(BASE_DIR, "Frontend", "utama")
+FRONTEND_ADMIN = os.path.join(BASE_DIR, "Frontend", "admin")
+
+
 def create_app():
     app = Flask(__name__, static_folder=None)
     app.config.from_object(Config)
@@ -30,56 +36,62 @@ def create_app():
     app.register_blueprint(dashboard_bp)
     app.register_blueprint(education_bp)
 
-    # ---- Static File Routes ----
-    @app.route('/')
+    # Main frontend
+    @app.route("/")
     def index():
-        return send_from_directory('Frontend/utama', 'index.html')
+        return send_from_directory(FRONTEND_UTAMA, "index.html")
 
-    @app.route('/admin')
-    @app.route('/admin/')
-    def admin_login():
-        return send_from_directory('Frontend/admin', 'login.html')
-
-    @app.route('/admin/dashboard')
-    def admin_dashboard():
-        return send_from_directory('Frontend/admin', 'dashboard.html')
-
-    # Serve utama static assets
-    @app.route('/css/<path:filename>')
+    @app.route("/css/<path:filename>")
     def serve_utama_css(filename):
-        return send_from_directory('Frontend/utama/css', filename)
+        return send_from_directory(os.path.join(FRONTEND_UTAMA, "css"), filename)
 
-    @app.route('/js/<path:filename>')
+    @app.route("/js/<path:filename>")
     def serve_utama_js(filename):
-        return send_from_directory('Frontend/utama/js', filename)
+        return send_from_directory(os.path.join(FRONTEND_UTAMA, "js"), filename)
 
-    @app.route('/assets/<path:filename>')
+    @app.route("/assets/<path:filename>")
     def serve_utama_assets(filename):
-        return send_from_directory('Frontend/utama', filename)
+        return send_from_directory(FRONTEND_UTAMA, filename)
 
-    # Serve admin static assets
-    @app.route('/admin/css/<path:filename>')
+    @app.route("/tiff.jpg")
+    def serve_profile_image():
+        return send_from_directory(FRONTEND_UTAMA, "tiff.jpg")
+
+    # Admin frontend
+    @app.route("/admin")
+    @app.route("/admin/")
+    def admin_login():
+        return send_from_directory(FRONTEND_ADMIN, "login.html")
+
+    @app.route("/admin/dashboard")
+    def admin_dashboard():
+        return send_from_directory(FRONTEND_ADMIN, "dashboard.html")
+
+    @app.route("/admin/css/<path:filename>")
     def serve_admin_css(filename):
-        return send_from_directory('Frontend/admin/css', filename)
+        return send_from_directory(os.path.join(FRONTEND_ADMIN, "css"), filename)
 
-    @app.route('/admin/js/<path:filename>')
+    @app.route("/admin/js/<path:filename>")
     def serve_admin_js(filename):
-        return send_from_directory('Frontend/admin/js', filename)
+        return send_from_directory(os.path.join(FRONTEND_ADMIN, "js"), filename)
 
     # Session check endpoint
-    @app.route('/api/me')
+    @app.route("/api/me")
     def me():
-        if session.get('user_id'):
-            return jsonify({'username': session.get('username'), 'id': session.get('user_id')})
-        return jsonify({'error': 'Unauthorized'}), 401
+        if session.get("user_id"):
+            return jsonify({
+                "username": session.get("username"),
+                "id": session.get("user_id")
+            })
+        return jsonify({"error": "Unauthorized"}), 401
 
     with app.app_context():
         try:
             db.create_all()
             _seed_admin()
-            print("✅ Database connected and ready!")
+            print("Database connected and ready!")
         except Exception as e:
-            print(f"⚠️  Database connection failed: {e}")
+            print(f"Database connection failed: {e}")
             print("App running in offline mode - API endpoints may fail")
 
     return app
@@ -90,15 +102,21 @@ def _seed_admin():
     try:
         from model import User
         from werkzeug.security import generate_password_hash
+
         if not User.query.first():
-            admin = User(username='admin', password=generate_password_hash('admin123'))
+            admin = User(
+                username="admin",
+                password=generate_password_hash("admin123")
+            )
             db.session.add(admin)
             db.session.commit()
-            print("✅ Default admin created: admin / admin123")
+            print("Default admin created: admin / admin123")
     except Exception as e:
         print(f"Seed admin failed: {e}")
 
 
-if __name__ == '__main__':
-    app = create_app()
+app = create_app()
+
+
+if __name__ == "__main__":
     app.run(debug=True, port=5000)
