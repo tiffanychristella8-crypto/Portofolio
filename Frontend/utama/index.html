@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="navbar">
+  <a href="#" class="nav-logo" id="nav-name">T. Christella</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact" class="btn-contact">Contact</a></li>
+    <li><a href="/admin" class="btn-login-admin" title="Admin Login">Admin</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger">&#9776;</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <p class="hero-eyebrow" id="hero-eyebrow">Information Systems</p>
+    <h1 class="hero-name" id="hero-name">Tiffany <em>Christella</em><br/>Mei Linda</h1>
+    <p class="hero-bio" id="hero-bio">Mahasiswa Sistem Informasi yang berdedikasi, pekerja
+keras, dan memiliki tanggung jawab tinggi dalam mengejar
+keunggulan teknis di dunia digital.</p>
+    <a href="#contact" class="btn-primary">Contact Me</a>
+  </div>
+  <div class="hero-img-wrap">
+    <img src="/assets/" alt="Profile Photo" class="hero-img" id="hero-photo"/>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about-section" id="about">
+  <div class="about-grid">
+    <div class="about-left">
+      <h2 class="section-title">About</h2>
+      <p id="about-text">Loading...</p>
+      <!-- Stats dinamis dari API -->
+      <div class="stats-row" id="stats-row">
+        <div class="stat-item">
+          <div class="stat-num">3<sup>+</sup></div>
+          <div class="stat-label">Years Exp</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2<sup>+</sup></div>
+          <div class="stat-label">Organizations</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">10<sup>+</sup></div>
+          <div class="stat-label">Projects Done</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-right">
+      <h2 class="section-title">Education</h2>
+      <!-- Education dinamis dari API -->
+      <div id="education-list">
+        <p style="color:#888;font-size:.85rem">Loading...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section skills-section" id="skills">
+  <div class="skills-header">
+    <h2 class="section-title center">Expertise</h2>
+    <p class="section-sub center">A balanced mix of technical proficiency and soft skills developed through academic and professional journey.</p>
+  </div>
+  <div class="skills-grid">
+    <div class="skills-col">
+      <p class="skills-label">Technical Skills</p>
+      <!-- Technical skills dinamis dari API -->
+      <div id="technical-skills">
+        <p style="color:#888;font-size:.85rem">Loading...</p>
+      </div>
+    </div>
+    <div class="skills-col">
+      <p class="skills-label">Professional Skills</p>
+      <!-- Professional skills dinamis dari API -->
+      <div id="professional-skills">
+        <p style="color:#888;font-size:.85rem">Loading...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section exp-section" id="experience">
+  <h2 class="section-title">My Experience</h2>
+  <!-- Experience dinamis dari API -->
+  <div class="exp-list" id="exp-list">
+    <p style="color:#888;font-size:.85rem">Loading...</p>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section projects-section" id="projects">
+  <div class="projects-header-row">
+    <div>
+      <h2 class="section-title">Selected Works</h2>
+      <p class="section-sub">A collection of projects bridging system analysis and modern UI/UX design.</p>
+    </div>
+    <a href="#" class="link-all">ALL PROJECTS →</a>
+  </div>
+  <!-- Projects dinamis dari API -->
+  <div class="projects-grid" id="projects-grid">
+    <p style="color:#888;font-size:.85rem">Loading...</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+  <div class="contact-grid">
+    <div class="contact-left">
+      <h2 class="section-title">Get In Touch</h2>
+      <p>Saya selalu terbuka untuk diskusi mengenai peluang kolaborasi atau proyek menarik lainnya.</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          <div>
+            <span class="ci-label">Email</span>
+            <!-- Email dinamis dari API -->
+            <span class="ci-val" id="contact-email">tiffanychristella@gmail.com</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <div>
+            <span class="ci-label">Location</span>
+            <!-- Location dinamis dari API -->
+            <span class="ci-val" id="contact-location">Salatiga, Jawa Tengah</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <form id="contact-form">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="NAME" required/>
+          <input type="email" name="email" placeholder="EMAIL" required/>
+        </div>
+        <textarea name="message" placeholder="MESSAGE" rows="5" required></textarea>
+        <button type="submit" class="btn-submit">SEND INQUIRY</button>
+      </form>
+      <p id="form-msg" style="font-size:0.82rem;margin-top:.5rem;color:var(--accent);"></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER dinamis dari API -->
+<footer class="footer">
+  <p id="footer-name">© 2026 Tiffany Christella Mei Linda</p>
+</footer>
+
+<script src="/js/script.js"></script>
+</body>
+</html>

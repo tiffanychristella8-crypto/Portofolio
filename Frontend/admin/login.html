@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Login — T. Christella</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/admin/css/base.css"/>
+  <link rel="stylesheet" href="/admin/css/login.css"/>
+</head>
+<body class="login-body">
+  <div class="login-card">
+    <div class="login-logo">T. Christella</div>
+    <p class="login-sub">Admin Dashboard</p>
+    <form id="login-form">
+      <div class="field-group">
+        <label>USERNAME</label>
+        <input type="text" id="username" placeholder="admin" required autocomplete="username"/>
+      </div>
+      <div class="field-group">
+        <label>PASSWORD</label>
+        <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password"/>
+      </div>
+      <p class="login-error" id="login-error"></p>
+      <button type="submit" class="btn-login">MASUK</button>
+      <a href="/" class="btn-back-portfolio">← Kembali ke Portfolio</a>
+    </form>
+  </div>
+  <script src="/admin/js/login.js"></script>
+</body>
+</html>
